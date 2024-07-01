@@ -21,7 +21,7 @@ P.S я пытался выполнить задание №2 используя 
 вот
 ### consumer.py IP:10.0.2.5
 #!/usr/bin/env python
-# coding=utf-8
+#coding=utf-8
 import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('10.0.2.15'))
@@ -36,9 +36,20 @@ def callback(ch, method, properties, body):
 channel.basic_consume(callback, queue='hello', no_ack=True)
 channel.start_consuming()
 ### ERROR
+limzor@limzor:~/pip$ /home/limzor/pip/myenv/bin/python /home/limzor/pip/consumer.py
+Traceback (most recent call last):
+  File "/home/limzor/pip/consumer.py", line 5, in <module>
+    connection = pika.BlockingConnection(pika.ConnectionParameters('10.0.2.15'))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/limzor/pip/myenv/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 360, in __init__
+    self._impl = self._create_connection(parameters, _impl_class)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/limzor/pip/myenv/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+    raise self._reap_last_connection_workflow_error(error)
+pika.exceptions.AMQPConnectionError
 ### producer.py IP:10.0.2.15
 #!/usr/bin/env python
-# coding=utf-8
+#coding=utf-8
 import pika
 
 connection = pika.BlockingConnection(pika.ConnectionParameters('l0.0.2.5'))
@@ -46,4 +57,15 @@ channel = connection.channel()
 channel.queue_declare(queue='hello')
 channel.basic_publish(exchange='', routing_key='hello', body='Hello Netology!')
 connection.close()
-ERROR
+### ERROR
+(myenv) limzor@limzor:~/pip$ /home/limzor/pip/myenv/bin/python /home/limzor/pip/producer.py
+Traceback (most recent call last):
+  File "/home/limzor/pip/producer.py", line 5, in <module>
+    connection = pika.BlockingConnection(pika.ConnectionParameters('10.0.2.15'))
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/limzor/pip/myenv/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 360, in __init__
+    self._impl = self._create_connection(parameters, _impl_class)
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/limzor/pip/myenv/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
+    raise self._reap_last_connection_workflow_error(error)
+pika.exceptions.AMQPConnectionError
