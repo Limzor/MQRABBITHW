@@ -77,3 +77,6 @@ pika.exceptions.AMQPConnectionError
 ![alt text](https://github.com/Limzor/mqrabbithw/blob/main/mq2.png)
 ![alt text](https://github.com/Limzor/mqrabbithw/blob/main/mq3.png)
 ![alt text](https://github.com/Limzor/mqrabbithw/blob/main/mq4.png)
+
+Не совсем понял про 10.0.2.5.
+10.0.2.5 и 10.0.2.15 это ip виртуальных машин на которых я выполнял задание.
