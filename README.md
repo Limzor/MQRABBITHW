@@ -69,3 +69,11 @@ Traceback (most recent call last):
   File "/home/limzor/pip/myenv/lib/python3.11/site-packages/pika/adapters/blocking_connection.py", line 451, in _create_connection
     raise self._reap_last_connection_workflow_error(error)
 pika.exceptions.AMQPConnectionError
+
+P.S 2.0
+Я нашёл решение проблемы. Полез в оф документацию и там код для consumer/producer немного отличается. Для верности удалил MQ и установил как следуюет, после чего всё заработало.
+
+![alt text](https://github.com/Limzor/mqrabbithw/blob/main/mq1.png)
+![alt text](https://github.com/Limzor/mqrabbithw/blob/main/mq2.png)
+![alt text](https://github.com/Limzor/mqrabbithw/blob/main/mq3.png)
+![alt text](https://github.com/Limzor/mqrabbithw/blob/main/mq4.png)
