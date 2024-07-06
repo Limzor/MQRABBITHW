@@ -70,7 +70,7 @@ Traceback (most recent call last):
     raise self._reap_last_connection_workflow_error(error)
 pika.exceptions.AMQPConnectionError
 
-P.S 2.0
+### P.S 2.0
 Я нашёл решение проблемы. Полез в оф документацию и там код для consumer/producer немного отличается. Для верности удалил MQ и установил как следуюет, после чего всё заработало.
 
 ![alt text](https://github.com/Limzor/mqrabbithw/blob/main/mq1.png)
